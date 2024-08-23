@@ -1,4 +1,4 @@
 import deezerApi
-album = deezerApi.get_album(304127)
-if album:
-    print(album)
+deezerApi.file_from_album(632126401)
+
+# https://huggingface.co/docs/datasets/image_dataset#imagefolder
