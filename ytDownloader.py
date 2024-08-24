@@ -6,6 +6,9 @@ def download(url:str,index:int,title:str)->None:
 
 def download_album(ids:list[str],title:str)->None:
     for i,url in enumerate(ids):
+        if url is None:
+            print(f"Track {i+1}/{len(ids)} for {title} is not available")
+            continue
         # check if the file already exists
         try:
             with open(f"videos/{title}/{i}.mp3") as f:

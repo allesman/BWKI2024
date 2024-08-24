@@ -1,4 +1,4 @@
-import ytMusicApi,ytDownloader,imgDownloader,re
+import ytMusicApi,ytDownloader,imgDownloader,re, pathvalidate
 
 
 def get_albums(query:list[str]):
@@ -8,6 +8,8 @@ def get_albums(query:list[str]):
 
 def get_album(query:str):
     img,ids = ytMusicApi.get_album(query)
+    # sanitize the query to remove any invalid characters
+    query = pathvalidate.sanitize_filename(query)
     imgDownloader.download(img,query)
     ytDownloader.download_album(ids,query)
 
